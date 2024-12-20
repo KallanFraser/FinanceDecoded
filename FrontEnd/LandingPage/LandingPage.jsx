@@ -1,11 +1,16 @@
 /** @format */
 import React from "react";
+import { NavigationBar } from "../NavigationBar/NavigationBar";
+import { SearchBar } from "./SearchBar/SearchBar";
+
+import "./LandingPage.css";
 
 const LandingPage = () => {
 	return (
-		<>
-			<h1>This is the landing page</h1>
-		</>
+		<div id="landing-page">
+			<NavigationBar />
+			<SearchBar />
+		</div>
 	);
 };
 

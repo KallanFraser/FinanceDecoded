@@ -1,0 +1,11 @@
+/** @format */
+
+#landing-page {
+	width: 100vw;
+	height: 100vh;
+	background: radial-gradient(circle at top left, var(--primary-color), var(--cool-blue));
+	color: var(--inner-font-color);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
