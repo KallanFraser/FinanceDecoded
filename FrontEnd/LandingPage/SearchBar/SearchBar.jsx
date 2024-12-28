@@ -1,8 +1,11 @@
 /** @format */
 
+//Library imports
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
+//CSS Import
 import "./SearchBar.css";
 
 export const SearchBar = () => {
@@ -21,8 +24,8 @@ export const SearchBar = () => {
 			});
 
 			if (CIKResponse.ok) {
-				const cik = await CIKResponse.json();
-				navigate(`/CompanyPage/${cik}`);
+				const companyCIK = await CIKResponse.json();
+				navigate(`/CompanyPage/${companyCIK}`);
 			}
 		} catch (error) {
 			console.log("Error fetching company CIK", error);
@@ -34,19 +37,22 @@ export const SearchBar = () => {
 		setSearchValue(currentSearchValue);
 
 		try {
-			const response = await fetch("http://localhost:3000/suggestCompanies", {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({ companyName: currentSearchValue }),
+			const response = await axios.post("http://localhost:3000/getCompanySuggestions", {
+				companyName: currentSearchValue,
 			});
 
-			if (response.ok) {
-				const data = await response.json();
-				setSuggestions(data);
-				setShowSuggestions(true);
-			}
+			setSuggestions(response.data);
+			setShowSuggestions(true);
 		} catch (error) {
 			console.log("Error fetching company suggestions", error);
+			// Optionally handle specific error scenarios
+			if (error.response) {
+				console.error("Server responded with an error:", error.response.status);
+			} else if (error.request) {
+				console.error("Request made but no response received:", error.request);
+			} else {
+				console.error("Error setting up the request:", error.message);
+			}
 		}
 	};
 

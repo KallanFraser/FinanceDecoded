@@ -1,0 +1,46 @@
+/** @format */
+
+#company-header {
+	width: 100%;
+	margin-top: 6rem;
+	padding-inline: 1rem;
+	display: flex;
+	flex-direction: column;
+}
+
+#header-line-one {
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+	padding-bottom: 0.5rem;
+	border-bottom: solid rgba(255, 255, 255, 0.5) 1px;
+}
+
+.header-button {
+	padding: 0.5rem 0.5rem;
+	border-radius: 1rem;
+	font-size: 1rem;
+	cursor: pointer;
+	background: hsl(240, 9%, 18%);
+	border: none;
+	color: var(--inner-font-color);
+	font-weight: 600;
+	transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header-button:hover {
+	background: var(--accent-color);
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+#header-line-two {
+	padding-top: 0.25rem;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+#header-line-two h1 {
+	font-size: 2.75rem;
+}

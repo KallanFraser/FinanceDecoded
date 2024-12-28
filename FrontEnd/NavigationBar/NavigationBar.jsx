@@ -1,14 +1,16 @@
 /** @format */
 
 import React from "react";
+import { Link } from "react-router-dom";
+
 import "./NavigationBar.css";
 
 export const NavigationBar = () => {
 	return (
 		<div id="navigation-bar">
-			<a>
+			<Link to="/">
 				<img src="../Logos/FinanceDecoded.png"></img>
-			</a>
+			</Link>
 			<div id="text-links">
 				<a className="links-text">Watchboard</a>
 				<a className="links-text">Search</a>

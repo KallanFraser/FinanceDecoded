@@ -4,6 +4,7 @@
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
+import cors from "cors";
 
 //Local static file imports
 import { pool } from "./Database/Database.js";
@@ -15,8 +16,10 @@ const currentDirectory = path.dirname(currentFile);
 
 //Express App Setup
 const app = express();
+app.use(express.static(path.join(currentDirectory, "../FrontEnd/dist")));
 app.use(express.json());
-app.use(routes);
+app.use(cors()); //Must be called before routes are defined
+app.use(routes); //Routes defined here
 const PORT = 3000;
 
 //Database connection test
