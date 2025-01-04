@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 //Components imported
 import { NavigationBar } from "../NavigationBar/NavigationBar";
 import { CompanyHeader } from "./Header/Header";
+import { StockGraphOneDay } from "./StockGraph/Graph/StockGraph";
 
 //Fetch Functions imported
 import fetchTicker from "../FetchFunctions/FetchTicker";
@@ -21,6 +22,7 @@ export const CompanyPage = () => {
 
 	const [ticker, setTicker] = useState("");
 	const [stockQuote, setStockQuote] = useState(null);
+	const [stockValues, setStockValues] = useState(null);
 
 	useEffect(() => {
 		if (companyCIK) {
@@ -32,6 +34,7 @@ export const CompanyPage = () => {
 	useEffect(() => {
 		if (ticker) {
 			fetchQuote(ticker[0], setStockQuote);
+			fetchStockDataOneDay(ticker[0], setStockValues);
 		}
 	}, [ticker]);
 
@@ -39,6 +42,8 @@ export const CompanyPage = () => {
 		<div id="company-page">
 			<NavigationBar />
 			{stockQuote != null && <CompanyHeader stockQuote={stockQuote} />}
+			<div id="graph-section"></div>
+			{ticker != "" && <StockGraphOneDay ticker={ticker[0]} />}
 		</div>
 	);
 };
