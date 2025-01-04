@@ -21,7 +21,7 @@
 	border-radius: 1rem;
 	font-size: 1rem;
 	cursor: pointer;
-	background: hsl(240, 9%, 18%);
+	background: var(--primary-color);
 	border: none;
 	color: var(--inner-font-color);
 	font-weight: 600;
@@ -38,9 +38,31 @@
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	gap: 0.5rem;
+	gap: 2rem;
 }
 
 #header-line-two h1 {
-	font-size: 2.75rem;
+	font-size: 3.25rem;
+}
+
+.market-price-positive {
+	color: hsl(120, 75%, 28%);
+}
+
+.market-price-negative {
+	color: hsl(0, 98%, 65%);
+}
+
+#regular-market-section {
+	display: flex;
+	flex-direction: row;
+	gap: 0.5rem;
+	align-items: center;
+}
+
+#after-market-section {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 0.5rem;
 }
